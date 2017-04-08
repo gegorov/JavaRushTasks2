@@ -17,27 +17,20 @@ public class Solution {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         //list of addresses
-        List<String> addresses = new ArrayList<>();
+        List<String> addresses = new ArrayList<String>();
         while (true) {
             String family = reader.readLine();
-            if (family.isEmpty()) {
-                break;
-            } else {
-                addresses.add(family);
-                //нечетные будут города
-                addresses.add(reader.readLine());
-            }
+            if (family.isEmpty()) break;
+
+            addresses.add(family);
         }
 
         //read home number
-        String city = reader.readLine();
-
-        for (String entry: addresses) {
-            if (city.equals(entry)) {
-                System.out.println(addresses.get(addresses.indexOf(entry) - 1));
+        String lastName = reader.readLine();
+        for (int i = 0; i < addresses.size(); i += 1) {
+            if (addresses.get(i).equals(lastName)) {
+                System.out.println(addresses.get(i + 1));
             }
-
         }
-
     }
 }
