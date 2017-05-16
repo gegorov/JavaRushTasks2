@@ -11,7 +11,13 @@ public class Solution {
     public static void main(String[] args) throws Exception {
         //напишите тут ваш код
 
-        method1();
+        try {
+            method1();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         //напишите тут ваш код
     }
