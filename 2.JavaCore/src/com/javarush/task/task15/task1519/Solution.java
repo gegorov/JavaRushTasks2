@@ -17,13 +17,7 @@ public class Solution {
         do {
             userInput = reader.readLine();
 
-            if (checkDouble(userInput)) {
-
-                    print(Double.parseDouble(userInput));
-
-
-
-            } else if (checkInt(userInput)) {
+             if (checkInt(userInput)) {
 
                 int myInt = Integer.parseInt(userInput);
 
@@ -37,10 +31,18 @@ public class Solution {
                 }
 
 
-            } else {
+            } else if (checkDouble(userInput)) {
+
+                print(Double.parseDouble(userInput));
+
+
+
+            } else if (!"exit".equals(userInput)) {
 
                 print(userInput);
-            }
+            } else {
+                 continue;
+             }
 
 
 
@@ -71,36 +73,23 @@ public class Solution {
     //check string by every char if it is digit & if it contains '.'
     public static boolean checkDouble(String inputString) {
 
-        boolean isDot = false;
+        try {
 
-        for (int i = 0; i < inputString.length() ; i++) {
-            char currentChar = inputString.charAt(i);
-
-            if (i == 0 && currentChar == '-') {
-                continue;
-            } else if (!Character.isDigit(currentChar) && currentChar == '.') {
-                isDot = true;
-                continue;
-            } else if (!Character.isDigit(currentChar) && currentChar != '.') {
-                return false;
-            }
+            Double.parseDouble(inputString);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
-        return isDot;
 
     }
 
     public static boolean checkInt (String inputString) {
 
-        for (int i = 0; i < inputString.length(); i++) {
-            char currentChar = inputString.charAt(i);
-
-            if (i == 0 && currentChar == '-') {
-                continue;
-            } else if (!Character.isDigit(currentChar)) {
-                return false;
-            }
+        try {
+            Integer.parseInt(inputString);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
-
-        return true;
     }
 }
